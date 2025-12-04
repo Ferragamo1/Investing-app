@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ferragamo Weekly Investing Plan 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color-scheme: dark;
+      --bg: #050816;
+      --card: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --accent-strong: rgba(79, 70, 229, 0.28);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --danger: #f97373;
+      --success: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, #1e293b 0, transparent 45%),
+        radial-gradient(circle at bottom right, #4f46e5 0, transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .glass {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow:
+        0 20px 40px rgba(15, 23, 42, 0.85),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      padding: 24px 20px 20px;
+      backdrop-filter: blur(18px);
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      width: fit-content;
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #22c55e 0, #16a34a 55%, #052e16 100%);
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+    }
+
+    h1 {
+      font-size: clamp(26px, 3vw, 32px);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), #020617);
+      padding: 14px 14px 16px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .highlight-pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.7);
+      background: radial-gradient(circle at top, var(--accent-soft), transparent);
+      color: #e5e7eb;
+    }
+
+    .amount-big {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .amount-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: 8px;
+      gap: 6px;
+    }
+
+    .amount-row span {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .chip-accent {
+      border-color: rgba(96, 165, 250, 0.9);
+      background: rgba(37, 99, 235, 0.2);
+      color: #e5e7eb;
+    }
+
+    .chip-risk {
+      border-color: rgba(248, 113, 113, 0.9);
+      background: rgba(127, 29, 29, 0.5);
+      color: #fee2e2;
+    }
+
+    .rotation {
+      margin-top: 6px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top left, #020617 0, #020617 50%, #020617 100%);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      padding: 10px;
+      max-height: 255px;
+      overflow: hidden;
+    }
+
+    .rotation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .rotation-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .rotation-current {
+      font-size: 11px;
+      color: #bfdbfe;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      background: #020617;
+      z-index: 1;
+    }
+
+    th,
+    td {
+      padding: 5px 4px;
+      text-align: left;
+    }
+
+    th {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    tbody tr:nth-child(odd) {
+      background: rgba(15, 23, 42, 0.3);
+    }
+
+    tbody tr.current {
+      background: linear-gradient(90deg, rgba(79, 70, 229, 0.3), rgba(15, 23, 42, 0.9));
+    }
+
+    td.ticker {
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    td.type {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    td.note {
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    .steps {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .steps ol {
+      margin-left: 18px;
+      margin-top: 4px;
+      display: grid;
+      gap: 2px;
+    }
+
+    .steps li {
+      margin-bottom: 1px;
+    }
+
+    footer {
+      margin-top: 16px;
+      font-size: 10px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .disclaimer {
+      max-width: 420px;
+    }
+
+    .success-text {
+      color: var(--success);
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .danger-text {
+      color: var(--danger);
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="glass">
+      <header>
+        <div class="tag">
+          <span class="tag-dot"></span>
+          <span>2026 Weekly Investing Script</span>
+        </div>
+        <h1>Ferragamo $20 per Week Investing Plan</h1>
+        <p class="subtitle">
+          One simple recurring setup using VOO, NVDA and a rotating high risk slot. Built for Robinhood, funded weekly, no market timing required.
+        </p>
+      </header>
+
+      <div class="grid">
+        <!-- LEFT COLUMN: WEEKLY PLAN -->
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <div class="label">Weekly contribution</div>
+              <div class="amount-big">$20 / week</div>
+            </div>
+            <span class="highlight-pill">Auto invest • Robinhood ready</span>
+          </div>
+
+          <div class="amount-row">
+            <div>
+              <div class="label">Safe foundation</div>
+              <strong>$12 → VOO</strong>
+            </div>
+            <span>S&amp;P 500 index • compounding core</span>
+          </div>
+
+          <div class="amount-row">
+            <div>
+              <div class="label">AI powerhouse</div>
+              <strong>$5 → NVDA</strong>
+            </div>
+            <span>AI and GPU growth exposure</span>
+          </div>
+
+          <div class="amount-row">
+            <div>
+              <div class="label">Rotating risk slot</div>
+              <strong>$3 → monthly pick</strong>
+            </div>
+            <span>Higher upside, controlled size</span>
+          </div>
+
+          <div class="chip-row">
+            <span class="chip-accent">VOO = long term base</span>
+            <span class="chip-accent">NVDA = AI growth</span>
+            <span class="chip-risk">PLTR / ARM / SMCI / TSLA = spice</span>
+          </div>
+
+          <p class="success-text">
+            Run this weekly through all of 2026 and only review mid year and end of year.
+          </p>
+        </section>
+
+        <!-- RIGHT COLUMN: CURRENT MONTH + ROTATION TABLE -->
+        <section class="card">
+          <div class="rotation">
+            <div class="rotation-header">
+              <div class="rotation-title">2026 monthly rotation</div>
+              <div id="current-label" class="rotation-current">
+                Current month: loading...
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Ticker</th>
+                  <th>Style</th>
+                  <th>Idea</th>
+                </tr>
+              </thead>
+              <tbody id="rotation-body">
+                <!-- injected by JS -->
+              </tbody>
+            </table>
+          </div>
+          <p id="current-stock-line" class="danger-text">
+            <!-- injected by JS -->
+          </p>
+        </section>
+      </div>
+
+      <!-- ROBINHOOD SETUP STEPS -->
+      <section class="card" style="margin-top: 14px;">
+        <div class="card-header">
+          <h2 class="card-title">How to set this up in Robinhood</h2>
+          <span class="pill">Uses fractional shares and recurring buys</span>
+        </div>
+        <div class="steps">
+          <ol>
+            <li>Search <strong>VOO</strong> → tap <strong>Buy</strong> → switch to <strong>Amount</strong> → set
+              <strong>Recurring</strong> → <strong>Weekly</strong> → enter <strong>$12</strong>.</li>
+            <li>Search <strong>NVDA</strong> → set a recurring weekly buy for <strong>$5</strong>.</li>
+            <li>
+              At the start of each new month, set or edit a recurring weekly buy of <strong>$3</strong> for the
+              listed rotation ticker for that month.
+            </li>
+            <li>Keep deposits at or above $20 per week so the script always has funds to run.</li>
+          </ol>
+        </div>
+      </section>
+
+      <footer>
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> This site describes a hypothetical educational investing plan and is not
+          financial advice. No guarantees, no promises. You choose what to use and you accept the risk.
+        </div>
+        <div>
+          <span class="badge">Built for 2026 • DCA</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Monthly rotation config for 2026
+    const rotation = [
+      { month: "January", ticker: "PLTR", name: "Palantir Technologies", type: "High risk AI", idea: "Gov + AI contract momentum early in the year" },
+      { month: "February", ticker: "NVDA", name: "Nvidia", type: "Extra AI weight", idea: "Stack more NVDA before and around Q1 earnings season" },
+      { month: "March", ticker: "ARM", name: "Arm Holdings", type: "Growth chips", idea: "Arm design presence in phones and edge devices" },
+      { month: "April", ticker: "SMCI", name: "Super Micro Computer", type: "AI servers", idea: "Server demand as AI infra builds out" },
+      { month: "May", ticker: "PLTR", name: "Palantir Technologies", type: "High risk AI", idea: "Government and defense spend through Q2" },
+      { month: "June", ticker: "TSLA", name: "Tesla", type: "High volatility", idea: "Summer delivery, news and volatility window" },
+      { month: "July", ticker: "NVDA", name: "Nvidia", type: "Extra AI weight", idea: "AI earnings and data center focus mid year" },
+      { month: "August", ticker: "ARM", name: "Arm Holdings", type: "Growth chips", idea: "Fall product cycles and mobile demand" },
+      { month: "September", ticker: "SMCI", name: "Super Micro Computer", type: "AI servers", idea: "Infra orders before year end" },
+      { month: "October", ticker: "PLTR", name: "Palantir Technologies", type: "High risk AI", idea: "Gov and defense cycles into Q4" },
+      { month: "November", ticker: "NVDA", name: "Nvidia", type: "Extra AI weight", idea: "Holiday and data center momentum" },
+      { month: "December", ticker: "TSLA", name: "Tesla", type: "High volatility", idea: "Year end moves and sentiment swings" }
+    ];
+
+    const tbody = document.getElementById("rotation-body");
+    const currentLabel = document.getElementById("current-label");
+    const currentLine = document.getElementById("current-stock-line");
+
+    // Populate table
+    rotation.forEach((row, idx) => {
+      const tr = document.createElement("tr");
+      tr.dataset.index = idx;
+
+      const tdMonth = document.createElement("td");
+      tdMonth.textContent = row.month;
+
+      const tdTicker = document.createElement("td");
+      tdTicker.textContent = row.ticker;
+      tdTicker.className = "ticker";
+
+      const tdType = document.createElement("td");
+      tdType.textContent = row.type;
+      tdType.className = "type";
+
+      const tdNote = document.createElement("td");
+      tdNote.textContent = row.idea;
+      tdNote.className = "note";
+
+      tr.appendChild(tdMonth);
+      tr.appendChild(tdTicker);
+      tr.appendChild(tdType);
+      tr.appendChild(tdNote);
+      tbody.appendChild(tr);
+    });
+
+    // Highlight the current month
+    const now = new Date();
+    const currentMonthIndex = now.getMonth(); // 0-11
+    const currentRow = rotation[currentMonthIndex];
+
+    const rows = tbody.querySelectorAll("tr");
+    if (rows[currentMonthIndex]) {
+      rows[currentMonthIndex].classList.add("current");
+    }
+
+    currentLabel.textContent = `Current month: ${currentRow.month} • Focus: ${currentRow.ticker}`;
+    currentLine.textContent = `For this month, the $3 weekly high risk slot is set to ${currentRow.ticker} (${currentRow.name}).`;
+  </script>
+</body>
+</html>
