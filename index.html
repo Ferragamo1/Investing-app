@@ -13,7 +13,7 @@
   <!-- Manifest -->
   <link rel="manifest" href="manifest.json">
 
-  <!-- iOS icons (optional but recommended if you add real icon files) -->
+  <!-- iOS icons (optional for now) -->
   <link rel="apple-touch-icon" href="icon-192.png">
   <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
   <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
@@ -33,32 +33,35 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      padding: 12px 8px 24px;
+      align-items: stretch;
+      padding: 0;
     }
 
     .app {
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
       background: rgba(15, 23, 42, 0.97);
-      border-radius: 20px;
-      padding: 16px 16px 20px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 0;
+      padding: 20px 18px 24px;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      border: none;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .header {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .title {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 700;
       margin-bottom: 2px;
     }
 
     .subtitle {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: #9ca3af;
     }
 
@@ -83,7 +86,7 @@
 
     .card {
       background: rgba(15, 23, 42, 0.96);
-      border-radius: 16px;
+      border-radius: 14px;
       padding: 12px 12px 14px;
       margin-top: 10px;
       border: 1px solid rgba(148, 163, 184, 0.25);
@@ -145,7 +148,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #9ca3af;
-      margin-top: 10px;
+      margin-top: 14px;
       margin-bottom: 4px;
     }
 
@@ -173,7 +176,7 @@
     }
 
     .controls {
-      margin-top: 14px;
+      margin-top: 16px;
       padding-top: 10px;
       border-top: 1px solid rgba(148, 163, 184, 0.25);
     }
@@ -234,16 +237,16 @@
       margin-top: 6px;
     }
 
-    @media (max-width: 390px) {
-      .app {
-        border-radius: 0;
-        border-width: 0;
-        box-shadow: none;
-        padding: 12px 10px 18px;
+    @media (min-width: 768px) {
+      body {
+        justify-content: center;
       }
-
-      .title {
-        font-size: 0.98rem;
+      .app {
+        max-width: 480px;
+        border-radius: 20px;
+        margin: 16px 0;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.35);
       }
     }
   </style>
@@ -299,7 +302,6 @@
   </div>
 
   <script>
-    // ISO week helper
     function getISOWeek(date) {
       const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
       const dayNum = d.getUTCDay() || 7;
@@ -309,13 +311,11 @@
       return { week: weekNo, year: d.getUTCFullYear() };
     }
 
-    // Rotation logic
     function getRotatingPick(week, year) {
       if (year < 2025) {
         return { ticker: null, message: "Plan not started yet", active: false };
       }
 
-      // December 2025 start
       if (year === 2025) {
         if (week < 50) {
           return { ticker: null, message: "Plan starts in Week 50 of 2025", active: false };
@@ -325,7 +325,6 @@
         if (week === 52) return { ticker: "ARM", message: "December 2025 chip hype", active: true };
       }
 
-      // Full year 2026 mapping
       if (year === 2026) {
         if (week >= 1 && week <= 4) return { ticker: "PLTR", message: "January: PLTR block", active: true };
         if (week >= 5 && week <= 8) return { ticker: "NVDA", message: "February: extra NVDA stack", active: true };
@@ -457,7 +456,6 @@
         renderPlan(selected);
       });
 
-      // Register service worker for PWA
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
           .register("service-worker.js")
