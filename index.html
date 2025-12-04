@@ -42,7 +42,7 @@
       max-width: 480px;
       background: rgba(15, 23, 42, 0.97);
       border-radius: 0;
-      padding: 20px 18px 24px;
+      padding: 20px 18px 28px;
       box-shadow: 0 0 0 rgba(0, 0, 0, 0);
       border: none;
       min-height: 100vh;
@@ -88,7 +88,7 @@
       background: rgba(15, 23, 42, 0.96);
       border-radius: 14px;
       padding: 12px 12px 14px;
-      margin-top: 10px;
+      margin-top: 12px;
       border: 1px solid rgba(148, 163, 184, 0.25);
     }
 
@@ -141,38 +141,6 @@
       font-weight: 600;
       color: #bbf7d0;
       font-size: 0.86rem;
-    }
-
-    .section-title {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #9ca3af;
-      margin-top: 14px;
-      margin-bottom: 4px;
-    }
-
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.72rem;
-      color: #9ca3af;
-      margin-top: 4px;
-      gap: 4px;
-    }
-
-    .meta-row span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 999px;
-      background: #fbbf24;
-      flex-shrink: 0;
     }
 
     .controls {
@@ -237,6 +205,43 @@
       margin-top: 6px;
     }
 
+    /* Spacer to push the base plan closer to the bottom */
+    .spacer {
+      flex-grow: 1;
+    }
+
+    .section-title {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-top: 14px;
+      margin-bottom: 4px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: #9ca3af;
+      margin-top: 4px;
+      gap: 4px;
+    }
+
+    .meta-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: #fbbf24;
+      flex-shrink: 0;
+    }
+
     @media (min-width: 768px) {
       body {
         justify-content: center;
@@ -289,6 +294,9 @@
         Plan starts in <strong>Week 50 of 2025</strong>. Before that there is no rotation pick.
       </div>
     </div>
+
+    <!-- This spacer pushes the base plan section toward the bottom -->
+    <div class="spacer"></div>
 
     <div class="section-title">Base plan (every week)</div>
     <ul class="list">
