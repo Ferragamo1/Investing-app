@@ -3,43 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ferragamo Weekly Investing Plan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- PWA meta for iPhone -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Ferragamo Plan">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- iOS icons (optional but recommended if you add real icon files) -->
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
     }
 
     body {
-      background: #050816;
+      background: #020617;
       color: #f9fafb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       min-height: 100vh;
-      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 12px 8px 24px;
     }
 
     .app {
-      max-width: 480px;
       width: 100%;
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: 18px;
-      padding: 18px 18px 22px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      max-width: 420px;
+      background: rgba(15, 23, 42, 0.97);
+      border-radius: 20px;
+      padding: 16px 16px 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.35);
     }
 
     .header {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .subtitle {
@@ -50,13 +65,13 @@
     .pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       font-size: 0.7rem;
       padding: 4px 9px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.4);
       color: #e5e7eb;
-      margin-top: 8px;
+      margin-top: 7px;
     }
 
     .pill-dot {
@@ -67,8 +82,8 @@
     }
 
     .card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 16px;
       padding: 12px 12px 14px;
       margin-top: 10px;
       border: 1px solid rgba(148, 163, 184, 0.25);
@@ -98,6 +113,7 @@
       background: rgba(37, 99, 235, 0.2);
       border: 1px solid rgba(59, 130, 246, 0.7);
       color: #dbeafe;
+      white-space: nowrap;
     }
 
     .list {
@@ -125,7 +141,7 @@
     }
 
     .section-title {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #9ca3af;
@@ -139,6 +155,7 @@
       font-size: 0.72rem;
       color: #9ca3af;
       margin-top: 4px;
+      gap: 4px;
     }
 
     .meta-row span {
@@ -152,6 +169,7 @@
       height: 5px;
       border-radius: 999px;
       background: #fbbf24;
+      flex-shrink: 0;
     }
 
     .controls {
@@ -177,10 +195,14 @@
       flex: 1;
       background: #020617;
       border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.7);
       padding: 6px 8px;
       color: #e5e7eb;
       font-size: 0.78rem;
+    }
+
+    .controls input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.8);
     }
 
     .controls button {
@@ -212,13 +234,16 @@
       margin-top: 6px;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 390px) {
       .app {
-        padding: 14px 14px 18px;
+        border-radius: 0;
+        border-width: 0;
+        box-shadow: none;
+        padding: 12px 10px 18px;
       }
 
       .title {
-        font-size: 1rem;
+        font-size: 0.98rem;
       }
     }
   </style>
@@ -230,7 +255,7 @@
       <div class="subtitle">$20 per week • VOO + NVDA + rotating pick</div>
       <div class="pill">
         <span class="pill-dot"></span>
-        Auto-syncs with current week of the year
+        Auto syncs with current week of the year
       </div>
     </div>
 
@@ -255,7 +280,7 @@
         <button id="go-btn">View</button>
       </div>
       <div class="hint">
-        By default this shows <strong>today’s week</strong>. Pick a date to see what that week should invest.
+        Default view uses today. Pick any date to see what that week should invest.
       </div>
       <div class="warning">
         Plan starts in <strong>Week 50 of 2025</strong>. Before that there is no rotation pick.
@@ -268,12 +293,13 @@
       <li><span class="ticker">NVDA</span><span class="amount">$5</span></li>
     </ul>
     <div class="meta-row">
-      <span><span class="dot"></span> Rotating pick uses $3 slot</span>
+      <span><span class="dot"></span><span>Rotating pick uses the $3 slot</span></span>
       <span>Total weekly: <strong>$20</strong></span>
     </div>
   </div>
 
   <script>
+    // ISO week helper
     function getISOWeek(date) {
       const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
       const dayNum = d.getUTCDay() || 7;
@@ -283,11 +309,13 @@
       return { week: weekNo, year: d.getUTCFullYear() };
     }
 
+    // Rotation logic
     function getRotatingPick(week, year) {
       if (year < 2025) {
         return { ticker: null, message: "Plan not started yet", active: false };
       }
 
+      // December 2025 start
       if (year === 2025) {
         if (week < 50) {
           return { ticker: null, message: "Plan starts in Week 50 of 2025", active: false };
@@ -295,11 +323,9 @@
         if (week === 50) return { ticker: "NVDA", message: "December 2025 ramp up", active: true };
         if (week === 51) return { ticker: "PLTR", message: "December 2025 rotation", active: true };
         if (week === 52) return { ticker: "ARM", message: "December 2025 chip hype", active: true };
-        if (week > 52) {
-          return { ticker: null, message: "Using 2026 schedule starting Week 1", active: false };
-        }
       }
 
+      // Full year 2026 mapping
       if (year === 2026) {
         if (week >= 1 && week <= 4) return { ticker: "PLTR", message: "January: PLTR block", active: true };
         if (week >= 5 && week <= 8) return { ticker: "NVDA", message: "February: extra NVDA stack", active: true };
@@ -317,7 +343,7 @@
       }
 
       if (year > 2026) {
-        return { ticker: null, message: "Plan currently defined through end of 2026 only", active: false };
+        return { ticker: null, message: "Plan currently defined through the end of 2026", active: false };
       }
 
       return { ticker: null, message: "No rotation defined for this week", active: false };
@@ -338,7 +364,7 @@
 
       if (!rotation.active) {
         chip.textContent = "Rotation inactive";
-        chip.style.background = "rgba(239,68,68,0.12)";
+        chip.style.background = "rgba(239,68,68,0.14)";
         chip.style.borderColor = "rgba(248,113,113,0.9)";
         chip.style.color = "#fecaca";
 
@@ -348,12 +374,11 @@
         p.style.marginTop = "2px";
         p.textContent = rotation.message;
         planContent.appendChild(p);
-
         return;
       }
 
-      chip.textContent = rotation.ticker + " week";
-      chip.style.background = "rgba(34,197,94,0.15)";
+      chip.textContent = `${rotation.ticker} week`;
+      chip.style.background = "rgba(34,197,94,0.18)";
       chip.style.borderColor = "rgba(34,197,94,0.9)";
       chip.style.color = "#bbf7d0";
 
@@ -390,7 +415,7 @@
       dot.className = "dot";
       spanLeft.appendChild(dot);
       const text = document.createElement("span");
-      text.textContent = " This week uses the $3 slot for " + rotation.ticker;
+      text.textContent = `This week uses the $3 slot for ${rotation.ticker}`;
       text.style.fontSize = "0.72rem";
       text.style.color = "#9ca3af";
       spanLeft.appendChild(text);
@@ -431,6 +456,13 @@
         const selected = new Date(y, m - 1, d);
         renderPlan(selected);
       });
+
+      // Register service worker for PWA
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .catch(err => console.error("SW registration failed", err));
+      }
     });
   </script>
 </body>
