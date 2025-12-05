@@ -237,6 +237,63 @@
       flex-shrink: 0;
     }
 
+    /* 2026 rotation snapshot styles */
+    .rotation-card {
+      margin-top: 14px;
+      padding: 12px 12px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      font-size: 0.75rem;
+    }
+
+    .rotation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .rotation-title {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+
+    .rotation-chip {
+      font-size: 0.67rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(94, 234, 212, 0.9);
+      color: #ccfbf1;
+      background: rgba(8, 47, 73, 0.7);
+      white-space: nowrap;
+    }
+
+    .rotation-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      row-gap: 3px;
+      column-gap: 6px;
+      margin-top: 4px;
+    }
+
+    .rotation-row {
+      display: contents;
+    }
+
+    .rotation-month {
+      color: #e5e7eb;
+    }
+
+    .rotation-ticker {
+      text-align: right;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #a5b4fc;
+    }
+
     @media (min-width: 768px) {
       body {
         justify-content: center;
@@ -298,6 +355,64 @@
     <div class="meta-row">
       <span><span class="dot"></span><span>Rotating pick uses the $3 slot</span></span>
       <span>Total weekly: <strong>$20</strong></span>
+    </div>
+
+    <!-- 2026 rotation snapshot -->
+    <div class="rotation-card">
+      <div class="rotation-header">
+        <div class="rotation-title">2026 rotation snapshot</div>
+        <div class="rotation-chip">PLTR • NVDA • ARM • SMCI • TSLA</div>
+      </div>
+      <div class="rotation-grid">
+        <div class="rotation-row">
+          <div class="rotation-month">Jan (w1–4)</div>
+          <div class="rotation-ticker">PLTR</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Feb (w5–8)</div>
+          <div class="rotation-ticker">NVDA</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Mar (w9–13)</div>
+          <div class="rotation-ticker">ARM</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Apr (w14–17)</div>
+          <div class="rotation-ticker">SMCI</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">May (w18–21)</div>
+          <div class="rotation-ticker">PLTR</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Jun (w22–26)</div>
+          <div class="rotation-ticker">TSLA</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Jul (w27–30)</div>
+          <div class="rotation-ticker">NVDA</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Aug (w31–35)</div>
+          <div class="rotation-ticker">ARM</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Sep (w36–39)</div>
+          <div class="rotation-ticker">SMCI</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Oct (w40–43)</div>
+          <div class="rotation-ticker">PLTR</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Nov (w44–48)</div>
+          <div class="rotation-ticker">NVDA</div>
+        </div>
+        <div class="rotation-row">
+          <div class="rotation-month">Dec (w49–52)</div>
+          <div class="rotation-ticker">TSLA</div>
+        </div>
+      </div>
     </div>
   </div>
 
